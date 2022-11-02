@@ -59,6 +59,7 @@
         android:fontFamily="casual"
         android:hint="@string/edit_text_usuario"
         android:paddingLeft="20dp"
+        android:paddingTop="10dp"
         android:paddingBottom="20dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.501"
@@ -74,35 +75,35 @@
         android:fontFamily="casual"
         android:hint="@string/edit_text_contrasenia"
         android:paddingLeft="20dp"
+        android:paddingTop="10dp"
         android:paddingBottom="20dp"
         android:password="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/usuario" />
 
-    <TextView
-        android:id="@+id/olvidoContraseña"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/buttonContinuar"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.509"
-        tools:text="@string/olvido" />
 
     <Button
         android:id="@+id/buttonContinuar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="196dp"
         android:backgroundTint="#009688"
         android:text="@string/texto_boton_continuar"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/olvido"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        android:clickable="true"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
