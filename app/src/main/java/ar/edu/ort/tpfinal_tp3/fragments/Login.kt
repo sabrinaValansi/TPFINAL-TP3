@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import androidx.navigation.fragment.findNavController
 import ar.edu.ort.tpfinal_tp3.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -22,6 +25,10 @@ class Login : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var userText : EditText
+    private lateinit var passText : EditText
+    private lateinit var botonContinuar: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -36,6 +43,23 @@ class Login : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        userText=view.findViewById(R.id.usuario)
+        passText=view.findViewById(R.id.password)
+        botonContinuar = view.findViewById<Button>(R.id.buttonContinuar)
+
+        val navController = findNavController()
+
+        botonContinuar.setOnClickListener{
+            navController.navigate(
+                LoginDirections.actionLoginToHome2(userText.text.toString())
+            )
+        }
+
     }
 
     companion object {

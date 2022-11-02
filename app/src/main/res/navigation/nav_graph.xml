@@ -18,5 +18,14 @@
         android:id="@+id/home2"
         android:name="ar.edu.ort.tpfinal_tp3.fragments.Home"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <argument
+            android:name="userName"
+            app:argType="string" />
+    </fragment>
+    <activity
+        android:id="@+id/settingsActivity"
+        android:name="ar.edu.ort.tpfinal_tp3.activities.SettingsActivity"
+        android:label="activity_settings"
+        tools:layout="@layout/activity_settings" />
 </navigation>
