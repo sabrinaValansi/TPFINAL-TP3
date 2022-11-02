@@ -5,7 +5,7 @@
     <string name="olvido">olvidaste tu contraseña?</string>
     <string name="titulo">Rick and Morty</string>
     <string name="texto_boton_continuar">Continuar</string>
-    <string name="edit_text_usuario"> Usuario</string>
-    <string name="edit_text_contrasenia"> Contraseña</string>
+    <string name="edit_text_usuario">Usuario</string>
+    <string name="edit_text_contrasenia">Contraseña</string>
 
 </resources>
