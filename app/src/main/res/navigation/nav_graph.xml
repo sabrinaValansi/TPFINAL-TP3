@@ -9,5 +9,14 @@
         android:id="@+id/login"
         android:name="ar.edu.ort.tpfinal_tp3.fragments.Login"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
+    <fragment
+        android:id="@+id/home2"
+        android:name="ar.edu.ort.tpfinal_tp3.fragments.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 </navigation>
