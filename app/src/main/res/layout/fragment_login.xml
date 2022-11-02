@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="casual"
         android:paddingBottom="30dp"
-        android:text="Rick and morty"
+        android:text="@string/titulo"
         android:textAlignment="center"
         android:textColor="#009688"
         android:textSize="34sp"
@@ -56,7 +56,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/recuadro"
-        android:hint="  Usuario"
+        android:hint="@string/edit_text_usuario"
         android:paddingBottom="20dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.501"
@@ -69,12 +69,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/recuadro"
-        android:hint="  Contraseña"
+        android:hint="@string/edit_text_contrasenia"
         android:paddingBottom="20dp"
         android:password="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/usuario" />
+
+    <TextView
+        android:id="@+id/olvidoContraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/buttonContinuar"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintVertical_bias="0.509"
+        tools:text="@string/olvido" />
 
     <Button
         android:id="@+id/buttonContinuar"
@@ -82,18 +94,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="200dp"
         android:backgroundTint="#009688"
-        android:text="Continuar"
+        android:text="@string/texto_boton_continuar"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
-    <TextView
-        android:id="@+id/olvidoContraseña"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="291dp"
-        tools:text="@string/olvido" />
 </androidx.constraintlayout.widget.ConstraintLayout>
