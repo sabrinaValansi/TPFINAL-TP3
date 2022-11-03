@@ -49,8 +49,10 @@ class MainActivity : AppCompatActivity() {
 
             if (destination.id != R.id.home2) {
                 supportActionBar?.hide()
+
             } else {
                 supportActionBar?.show()
+                supportActionBar?.setDisplayShowTitleEnabled(false);
 
                 if (destination.id == R.id.home2) {
                     arguments?.getString("userName")?.let { UserSession.userName = it }
