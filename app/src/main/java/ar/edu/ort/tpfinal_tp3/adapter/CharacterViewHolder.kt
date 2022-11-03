@@ -21,7 +21,7 @@ class CharacterViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(character: ar.edu.ort.tpfinal_tp3.model.Character) {
         name.text = character.name
-        status.text = character.status
+        status.text = "Status: ${character.status}"
 
         Glide.with(itemView)
             .load(character.image)

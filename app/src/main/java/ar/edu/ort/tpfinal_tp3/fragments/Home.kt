@@ -1,6 +1,7 @@
 package ar.edu.ort.tpfinal_tp3.fragments
 
 import android.accessibilityservice.AccessibilityService.MagnificationController.OnMagnificationChangedListener
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -98,6 +99,7 @@ class Home : Fragment(), OnCharacterClickedListener {
         val service = CharacterServiceApiBuilder.create()
 
         service.getCharacter().enqueue(object : Callback<JsonObject> {
+            @SuppressLint("SuspiciousIndentation")
             override fun onResponse(
                 call: Call<JsonObject>,
                 response: Response<JsonObject>
