@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import ar.edu.ort.tpfinal_tp3.R
+import ar.edu.ort.tpfinal_tp3.R.drawable.icono_status2
 import com.bumptech.glide.Glide
 
 // TODO: Rename parameter arguments, choose names that match
@@ -31,8 +32,8 @@ class Detail : Fragment() {
     private lateinit var name_detail : TextView
     private lateinit var specie_detail : TextView
     private lateinit var origin_detail : TextView
-
-
+    private lateinit var icono:ImageView
+    private lateinit var icono2:ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,12 +59,22 @@ class Detail : Fragment() {
         specie_detail=view.findViewById(R.id.character_detail_specie)
         name_detail=view.findViewById(R.id.character_detail_name)
         status_detail=view.findViewById(R.id.character_detail_status)
+        icono=view.findViewById(R.id.iconoStatus)
+
 
         arguments?.let {
             val character = DetailArgs.fromBundle(it).character
             specie_detail.text=character.species
             name_detail.text=character.name
             status_detail.text=character.status
+            //origin_detail.text=character.origin.toString()
+
+            if(status_detail.text=="Alive"){
+                icono.setImageResource(R.drawable.icono_status2)
+            }else{
+                icono.setImageResource(R.drawable.icono_status)
+            }
+
 
             Glide.with(this)
                 .load(character.image)
