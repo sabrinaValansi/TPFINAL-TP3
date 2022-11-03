@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import ar.edu.ort.tpfinal_tp3.R
 
@@ -28,6 +29,9 @@ class Login : Fragment() {
     private lateinit var userText : EditText
     private lateinit var passText : EditText
     private lateinit var botonContinuar: Button
+
+    private lateinit var textError : TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,13 +56,19 @@ class Login : Fragment() {
         passText=view.findViewById(R.id.password)
         botonContinuar = view.findViewById<Button>(R.id.buttonContinuar)
 
+        textError=view.findViewById(R.id.error)
+
         val navController = findNavController()
 
-        botonContinuar.setOnClickListener{
-            navController.navigate(
-                LoginDirections.actionLoginToHome2(userText.text.toString())
-            )
-        }
+        botonContinuar.setOnClickListener {
+            if (userText.text.isEmpty() || passText.text.isEmpty()){
+                textError.setText("Debe ingresar usuario y contraseña")
+            }
+            else{
+                navController.navigate(
+                    LoginDirections.actionLoginToHome2(userText.text.toString())
+                )
+            } }
 
     }
 
