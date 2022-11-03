@@ -3,22 +3,21 @@ package ar.edu.ort.tpfinal_tp3.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import ar.edu.ort.tpfinal_tp3.R
 import ar.edu.ort.tpfinal_tp3.utils.UserSession
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var navController: NavController
-    private lateinit var appBarConfig : AppBarConfiguration
-    private lateinit var navView : NavigationView
+    private lateinit var navHostFragment: NavHostFragment
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navigationView: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,35 +29,44 @@ class MainActivity : AppCompatActivity() {
 
     private fun initSessionAndHamgMenu() {
 
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        drawerLayout = findViewById(R.id.drawer_layout)
+        navigationView = findViewById(R.id.nav_view)
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 
-        navView = findViewById(R.id.nav_view)
+        val navController = navHostFragment.navController
 
-        navView.setupWithNavController(navController)
+        navigationView.setupWithNavController(navController)
 
+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
 
-        appBarConfig = AppBarConfiguration(
-            topLevelDestinationIds = setOf(
-                R.id.home2,
-                R.id.settingsActivity,
-                R.id.login
-            ),
-            fallbackOnNavigateUpListener = ::onSupportNavigateUp
-        )
-
-        setupActionBarWithNavController(navController, appBarConfig)
-
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController.addOnDestinationChangedListener{_, _, _, ->
+            supportActionBar?.setHomeAsUpIndicator(R.drawable.hamburger_icon)
+        }
 
 
-        // Agrego un listener para poder escuchar cada vez que se realiza una navegacion
-        navHostFragment.navController.addOnDestinationChangedListener { _, destination, arguments ->
-            // Si mi destino es la Home, tomo el userName que recibio por parametro y lo almaceno en un Object
-            if (destination.id == R.id.home2) {
-                arguments?.getString("userName")?.let { UserSession.userName = it }
+
+        navController.addOnDestinationChangedListener { _, destination, arguments ->
+
+            if (destination.id != R.id.home2) {
+                supportActionBar?.hide()
+            } else {
+                supportActionBar?.show()
+
+                if (destination.id == R.id.home2) {
+                    arguments?.getString("userName")?.let { UserSession.userName = it }
+                }
             }
         }
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+
+        return false
+    }
 
 }
