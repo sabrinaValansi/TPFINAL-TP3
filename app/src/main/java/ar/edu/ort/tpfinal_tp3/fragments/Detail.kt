@@ -69,10 +69,12 @@ class Detail : Fragment() {
             status_detail.text=character.status
             //origin_detail.text=character.origin.toString()
 
-            if(status_detail.text=="Alive"){
+            if(status_detail.text.equals("Alive")){
                 icono.setImageResource(R.drawable.icono_status2)
-            }else{
+            }else if (status_detail.text.equals("Dead")){
                 icono.setImageResource(R.drawable.icono_status)
+            } else {
+                icono.setImageResource(R.drawable.icono_status3)
             }
 
 
