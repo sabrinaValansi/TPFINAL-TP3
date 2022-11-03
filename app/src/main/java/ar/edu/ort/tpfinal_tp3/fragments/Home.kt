@@ -86,9 +86,7 @@ class Home : Fragment(), OnCharacterClickedListener {
 
         characterList = ArrayList()
 
-        getCharacter().let {
-
-        }
+        getCharacter()
 
         recycler.adapter = CharacterAdapter(characterList, this)
 
@@ -108,7 +106,17 @@ class Home : Fragment(), OnCharacterClickedListener {
 
                   val json = response.body()!!.results
 
-                    characterList.addAll(json)
+
+                    for (item in json) {
+                        val currentCharacter = Character(
+                            name = item.name,
+                            status = item.status,
+                            image = item.image,
+                            species = item.species,
+                            origin = item.origin
+                        )
+                        characterList.add(currentCharacter)
+                    }
 
                     callAdapter(characterList)
                 }
