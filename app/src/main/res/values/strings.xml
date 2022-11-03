@@ -7,5 +7,7 @@
     <string name="texto_boton_continuar">Continuar</string>
     <string name="edit_text_usuario">Usuario</string>
     <string name="edit_text_contrasenia">Contraseña</string>
+    <string name="character_name_text">Nombre del Personaje</string>
+    <string name="character_status_text">Status del Personaje</string>
 
 </resources>

@@ -14,6 +14,5 @@ object CharacterServiceApiBuilder {
 
     fun create(): CharacterService {
         return retrofit.create(CharacterService::class.java)
-
     }
 }
