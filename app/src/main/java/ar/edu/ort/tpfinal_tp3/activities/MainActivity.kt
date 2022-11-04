@@ -1,5 +1,7 @@
 package ar.edu.ort.tpfinal_tp3.activities
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +9,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -21,14 +24,27 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
+    lateinit var sharedPreferences: SharedPreferences
+    private lateinit var fragment : Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         initSessionAndHamgMenu()
-    }
 
+        sharedPreferences = getSharedPreferences("Mode", Context.MODE_PRIVATE)
+
+        val nightMode : Boolean = sharedPreferences.getBoolean("night", false)
+
+        if (nightMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
+    }
 
     private fun initSessionAndHamgMenu() {
 
@@ -74,18 +90,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         return false
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        val prefs = PreferenceManager.getDefaultSharedPreferences(applicationContext)
-
-        val nightMode : Int = Log.d("night_mode", prefs.getBoolean("switch_preference_night_mode", false).toString())
-
-        if (nightMode == 1) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }
     }
 
 }

@@ -108,7 +108,6 @@ class Home : Fragment(), OnCharacterClickedListener {
                   val json = response.body()!!.results
 
                     for (item in json) {
-                        println(item)
                         val currentCharacter = Character(
                             name = item.name,
                             status = item.status,

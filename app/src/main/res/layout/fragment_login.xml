@@ -5,6 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="@drawable/recuadro"
     tools:context=".fragments.Login">
 
@@ -43,8 +44,8 @@
         android:fontFamily="casual"
         android:paddingBottom="30dp"
         android:text="@string/titulo"
+        style="@style/TEXTS"
         android:textAlignment="center"
-        android:textColor="#009688"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -58,6 +59,7 @@
         android:background="@drawable/recuadro"
         android:fontFamily="casual"
         android:hint="@string/edit_text_usuario"
+        style="@style/EDITTEXTS"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="20dp"
@@ -71,6 +73,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        style="@style/EDITTEXTS"
         android:background="@drawable/recuadro"
         android:fontFamily="casual"
         android:hint="@string/edit_text_contrasenia"
@@ -86,9 +89,9 @@
     <Button
         android:id="@+id/buttonContinuar"
         android:layout_width="0dp"
+        style="@style/BUTTON"
         android:layout_height="wrap_content"
         android:layout_marginBottom="196dp"
-        android:backgroundTint="#009688"
         android:text="@string/texto_boton_continuar"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -103,6 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/olvido"
+        style="@style/TEXTS"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         android:clickable="true"
         app:layout_constraintTop_toBottomOf="@+id/password" />
