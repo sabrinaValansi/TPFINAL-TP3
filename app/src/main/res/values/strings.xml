@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TPFINAL-TP3</string>
+    <string name="app_name">Settings</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="olvido">olvidaste tu contraseña?</string>
