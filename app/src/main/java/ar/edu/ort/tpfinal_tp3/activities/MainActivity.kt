@@ -69,10 +69,10 @@ class MainActivity : AppCompatActivity() {
                 supportActionBar?.show()
                 supportActionBar?.setHomeAsUpIndicator(R.drawable.hamburger_icon)
                 supportActionBar?.setDisplayShowTitleEnabled(false);
+                isTheFragment = false
 
-                if (destination.id == R.id.home2) {
-                    arguments?.getString("userName")?.let { UserSession.userName = it }
-                }
+                arguments?.getString("userName")?.let { UserSession.userName = it }
+
             } else if (destination.id == R.id.detail) {
                 isTheFragment = true
                 supportActionBar?.show()
