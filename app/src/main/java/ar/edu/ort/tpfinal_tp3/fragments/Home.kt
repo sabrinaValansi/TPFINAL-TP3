@@ -23,6 +23,7 @@ import ar.edu.ort.tpfinal_tp3.adapter.CharacterAdapter
 import ar.edu.ort.tpfinal_tp3.listener.OnCharacterClickedListener
 import ar.edu.ort.tpfinal_tp3.model.Character
 import ar.edu.ort.tpfinal_tp3.model.JsonObject
+import ar.edu.ort.tpfinal_tp3.model.Origin
 import ar.edu.ort.tpfinal_tp3.service.CharacterServiceApiBuilder
 import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
@@ -106,8 +107,8 @@ class Home : Fragment(), OnCharacterClickedListener {
 
                   val json = response.body()!!.results
 
-
                     for (item in json) {
+                        println(item)
                         val currentCharacter = Character(
                             name = item.name,
                             status = item.status,
@@ -115,6 +116,7 @@ class Home : Fragment(), OnCharacterClickedListener {
                             species = item.species,
                             origin = item.origin
                         )
+
                         characterList.add(currentCharacter)
                     }
 

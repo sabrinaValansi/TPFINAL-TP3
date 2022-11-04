@@ -5,14 +5,17 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 data class Origin (
-    @SerializedName("origin") val name : String?
+    val name : String?,
+    val url : String?
         ) : Parcelable {
             constructor(parcel : Parcel) : this(
+                parcel.readString(),
                 parcel.readString()
             )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
+        parcel.writeString(url)
     }
 
     override fun describeContents(): Int {

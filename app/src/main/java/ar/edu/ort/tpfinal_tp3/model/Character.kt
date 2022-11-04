@@ -8,7 +8,7 @@ data class Character (
     var status: String?,
     var image: String?,
     var species: String?,
-    var origin: Origin? = null
+    var origin: Origin?
 
     ) : Parcelable {
         constructor(parcel : Parcel) : this(
@@ -16,7 +16,7 @@ data class Character (
             parcel.readString(),
             parcel.readString(),
             parcel.readString(),
-
+            parcel.readParcelable(Origin::class.java.classLoader)
         )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -24,7 +24,7 @@ data class Character (
         parcel.writeString(status)
         parcel.writeString(image)
         parcel.writeString(species)
-
+        parcel.writeParcelable(origin, flags)
     }
 
     override fun describeContents(): Int {

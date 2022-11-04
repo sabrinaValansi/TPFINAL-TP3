@@ -59,6 +59,7 @@ class Detail : Fragment() {
         specie_detail=view.findViewById(R.id.character_detail_specie)
         name_detail=view.findViewById(R.id.character_detail_name)
         status_detail=view.findViewById(R.id.character_detail_status)
+        origin_detail=view.findViewById(R.id.character_detail_origin)
         icono=view.findViewById(R.id.iconoStatus)
 
 
@@ -67,7 +68,7 @@ class Detail : Fragment() {
             specie_detail.text=character.species
             name_detail.text=character.name
             status_detail.text=character.status
-            //origin_detail.text=character.origin.toString()
+            origin_detail.text=character.origin?.name
 
             if(status_detail.text.equals("Alive")){
                 icono.setImageResource(R.drawable.icono_status2)
