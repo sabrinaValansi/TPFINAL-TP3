@@ -8,6 +8,7 @@ import androidx.preference.PreferenceFragmentCompat
 import ar.edu.ort.tpfinal_tp3.R
 
 class SettingsActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)

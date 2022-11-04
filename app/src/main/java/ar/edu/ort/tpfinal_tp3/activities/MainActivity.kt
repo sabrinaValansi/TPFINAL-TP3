@@ -2,13 +2,16 @@ package ar.edu.ort.tpfinal_tp3.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
+import androidx.preference.PreferenceManager
 import ar.edu.ort.tpfinal_tp3.R
 import ar.edu.ort.tpfinal_tp3.utils.UserSession
 import com.google.android.material.navigation.NavigationView
@@ -71,6 +74,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         return false
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val prefs = PreferenceManager.getDefaultSharedPreferences(applicationContext)
+
+        val nightMode : Int = Log.d("night_mode", prefs.getBoolean("switch_preference_night_mode", false).toString())
+
+        if (nightMode == 1) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
     }
 
 }
