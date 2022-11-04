@@ -47,16 +47,18 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, arguments ->
 
-            if (destination.id != R.id.home2) {
-                supportActionBar?.hide()
 
-            } else {
+            if(destination.id == R.id.home2 || destination.id == R.id.detail) {
                 supportActionBar?.show()
                 supportActionBar?.setDisplayShowTitleEnabled(false);
 
                 if (destination.id == R.id.home2) {
                     arguments?.getString("userName")?.let { UserSession.userName = it }
                 }
+            }
+            else  {
+                supportActionBar?.hide()
+
             }
         }
     }
