@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
     lateinit var sharedPreferences: SharedPreferences
+    private var isTheFragment : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,6 +74,7 @@ class MainActivity : AppCompatActivity() {
                     arguments?.getString("userName")?.let { UserSession.userName = it }
                 }
             } else if (destination.id == R.id.detail) {
+                isTheFragment = true
                 supportActionBar?.show()
                 supportActionBar?.setDisplayShowTitleEnabled(false);
                 supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -93,5 +96,18 @@ class MainActivity : AppCompatActivity() {
         return false
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle presses on the action bar menu items
+
+        if (isTheFragment) {
+            when (item.itemId) {
+                android.R.id.home -> {
+                    this?.onBackPressed()
+                    return true
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
 }
