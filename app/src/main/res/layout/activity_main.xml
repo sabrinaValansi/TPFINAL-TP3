@@ -32,6 +32,8 @@
         app:layout_constraintGuide_percent="0.09" />
 
     <com.google.android.material.navigation.NavigationView
+        style="@style/SCREEN"
+        app:itemBackground="@color/purple_200"
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

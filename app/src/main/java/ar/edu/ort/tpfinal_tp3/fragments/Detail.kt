@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import ar.edu.ort.tpfinal_tp3.R
 import ar.edu.ort.tpfinal_tp3.R.drawable.icono_status2
 import com.bumptech.glide.Glide
@@ -33,7 +34,6 @@ class Detail : Fragment() {
     private lateinit var specie_detail : TextView
     private lateinit var origin_detail : TextView
     private lateinit var icono:ImageView
-    private lateinit var icono2:ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +42,9 @@ class Detail : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,10 +52,16 @@ class Detail : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_detail, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        /*parentFragmentManager.beginTransaction()
+            .add( , "home")
+            .addToBackStack(null)
+            .commit()*/
 
         image_detail=view.findViewById(R.id.character_detail_image)
         specie_detail=view.findViewById(R.id.character_detail_specie)
@@ -83,7 +91,6 @@ class Detail : Fragment() {
                 .load(character.image)
                 .into(image_detail)
 
-
         }
     }
 
@@ -107,4 +114,5 @@ class Detail : Fragment() {
                 }
             }
     }
+
 }
