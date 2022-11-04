@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="switch_preference_night_mode"
+        android:title="@string/character_preference_night_mode" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="switch_preference_searcher_enabled"
+        android:title="@string/character_preference_searcher_enabled" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="switch_preference_allow_favorites"
+        android:title="@string/character_preference_allow_favorites" />
+
+</PreferenceScreen>

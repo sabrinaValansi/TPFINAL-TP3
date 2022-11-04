@@ -9,5 +9,8 @@
     <string name="edit_text_contrasenia">Contraseña</string>
     <string name="character_name_text">Nombre del Personaje</string>
     <string name="character_status_text">Status del Personaje</string>
+    <string name="character_preference_night_mode">Modo Nocturno</string>
+    <string name="character_preference_searcher_enabled">Buscador Habilitado</string>
+    <string name="character_preference_allow_favorites">Permitir agregar a Favoritos</string>
 
 </resources>
