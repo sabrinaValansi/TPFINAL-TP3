@@ -21,6 +21,8 @@
 
     <style name="TEXTS">
         <item name="android:textColor">@color/purple_200</item>
+        <item name="android:fontFamily">"casual"</item>
+
     </style>
 
     <style name="EDITTEXTS">
