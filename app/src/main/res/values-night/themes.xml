@@ -25,6 +25,7 @@
 
     <style name="EDITTEXTS">
         <item name="android:textColorHint">@color/purple_200</item>
+        <item name="android:textColor">@color/purple_200</item>
     </style>
 
     <style name="BUTTON">
