@@ -13,6 +13,7 @@
         <action
             android:id="@+id/action_login_to_home2"
             app:destination="@id/home2"
+            app:popUpTo="@id/login"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
