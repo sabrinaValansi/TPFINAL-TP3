@@ -65,6 +65,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/character_detail_image" />
 
             <TextView
+                style="@style/TEXTS"
                 android:id="@+id/character_detail_status"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="17dp"
@@ -81,6 +82,7 @@
 
 
         <TextView
+            style="@style/TEXTS"
             android:id="@+id/character_detail_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -92,6 +94,7 @@
             app:layout_constraintTop_toBottomOf="@+id/character_detail_status" />
 
         <TextView
+            style="@style/TEXTS"
             android:id="@+id/character_detail_specie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,6 +106,7 @@
             app:layout_constraintTop_toBottomOf="@+id/character_detail_name" />
 
         <TextView
+            style="@style/TEXTS"
             android:id="@+id/character_detail_origin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

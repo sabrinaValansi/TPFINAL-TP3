@@ -32,4 +32,9 @@
         <item name="android:background">@color/purple_200</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="CARD">
+        <item name="cardBackgroundColor">#454545</item>
+    </style>
+
 </resources>
