@@ -53,6 +53,8 @@
 
     <EditText
         android:id="@+id/usuario"
+        android:inputType="text"
+        android:maxLines="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/recuadro"
@@ -69,6 +71,8 @@
 
     <EditText
         android:id="@+id/password"
+        android:inputType="text"
+        android:maxLines="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
