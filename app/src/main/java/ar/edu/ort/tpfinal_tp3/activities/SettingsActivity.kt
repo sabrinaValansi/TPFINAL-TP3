@@ -19,6 +19,7 @@ class SettingsActivity : AppCompatActivity() {
     lateinit var switcher: Switch
     lateinit var sharedPreferences: SharedPreferences
     lateinit var editor : SharedPreferences.Editor
+    lateinit var switcherGender : Switch
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +34,25 @@ class SettingsActivity : AppCompatActivity() {
 
         switcher = findViewById(R.id.switcher)
 
+        switcherGender = findViewById(R.id.switcherGender)
+
         sharedPreferences = getSharedPreferences("Mode", Context.MODE_PRIVATE)
+
+        val genderEnabled : Boolean = sharedPreferences.getBoolean("gender", false)
+
+        if (genderEnabled) {
+            switcherGender.isChecked = true
+        }
+
+        switcherGender.setOnClickListener{
+            editor = sharedPreferences.edit()
+            if (genderEnabled) {
+                editor.putBoolean("gender", false)
+            } else {
+                editor.putBoolean("gender", true)
+            }
+            editor.apply()
+        }
 
         val nightMode : Boolean = sharedPreferences.getBoolean("night", false)
 

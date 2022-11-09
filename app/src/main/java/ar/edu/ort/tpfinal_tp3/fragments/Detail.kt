@@ -1,5 +1,7 @@
 package ar.edu.ort.tpfinal_tp3.fragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import ar.edu.ort.tpfinal_tp3.R
 import ar.edu.ort.tpfinal_tp3.R.drawable.icono_status2
 import com.bumptech.glide.Glide
@@ -33,7 +36,10 @@ class Detail : Fragment() {
     private lateinit var name_detail : TextView
     private lateinit var specie_detail : TextView
     private lateinit var origin_detail : TextView
-    private lateinit var icono:ImageView
+    private lateinit var icono : ImageView
+    private lateinit var gender_detail : TextView
+
+    lateinit var sharedPreferences: SharedPreferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,6 +75,7 @@ class Detail : Fragment() {
         status_detail=view.findViewById(R.id.character_detail_status)
         origin_detail=view.findViewById(R.id.character_detail_origin)
         icono=view.findViewById(R.id.iconoStatus)
+        gender_detail = view.findViewById(R.id.character_detail_gender)
 
 
         arguments?.let {
@@ -77,6 +84,7 @@ class Detail : Fragment() {
             name_detail.text=character.name
             status_detail.text=character.status
             origin_detail.text=character.origin?.name
+            gender_detail.text = character.gender
 
             if(status_detail.text.equals("Alive")){
                 icono.setImageResource(R.drawable.icono_status2)
@@ -92,6 +100,18 @@ class Detail : Fragment() {
                 .into(image_detail)
 
         }
+
+        sharedPreferences = requireActivity().getSharedPreferences("Mode", Context.MODE_PRIVATE)
+
+        val genderEnabled : Boolean = sharedPreferences.getBoolean("gender", true)
+
+
+        if (genderEnabled) {
+            gender_detail.isVisible = true
+        } else {
+            gender_detail.isVisible = false
+        }
+
     }
 
 

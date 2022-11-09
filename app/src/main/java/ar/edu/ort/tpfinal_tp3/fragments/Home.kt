@@ -113,7 +113,8 @@ class Home : Fragment(), OnCharacterClickedListener {
                             status = item.status,
                             image = item.image,
                             species = item.species,
-                            origin = item.origin
+                            origin = item.origin,
+                            gender = item.gender
                         )
 
                         characterList.add(currentCharacter)
