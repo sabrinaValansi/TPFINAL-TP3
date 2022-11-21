@@ -11,6 +11,11 @@
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="Settings" />
     <item
+        android:id="@+id/favorites"
+        android:icon="@drawable/ic_favorite"
+        android:title="Favorites"
+        />
+    <item
         android:id="@+id/login"
         android:icon="@drawable/ic_baseline_logout_24"
         android:title="Logout" />

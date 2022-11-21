@@ -1,15 +1,19 @@
 package ar.edu.ort.tpfinal_tp3.model
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class Character (
     var name: String?,
     var status: String?,
     var image: String?,
     var species: String?,
     var origin: Origin?,
-    var gender : String?
+    var gender : String?,
+    @PrimaryKey(autoGenerate = true) val uid : Int
 
     ) : Parcelable {
         constructor(parcel : Parcel) : this(
@@ -18,7 +22,8 @@ data class Character (
             parcel.readString(),
             parcel.readString(),
             parcel.readParcelable(Origin::class.java.classLoader),
-            parcel.readString()
+            parcel.readString(),
+            parcel.readInt()
         )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -28,6 +33,7 @@ data class Character (
         parcel.writeString(species)
         parcel.writeParcelable(origin, flags)
         parcel.writeString(gender)
+        parcel.writeInt(uid)
     }
 
     override fun describeContents(): Int {

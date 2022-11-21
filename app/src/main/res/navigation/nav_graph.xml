@@ -42,4 +42,9 @@
             android:name="character"
             app:argType="ar.edu.ort.tpfinal_tp3.model.Character" />
     </fragment>
+    <fragment
+        android:id="@+id/favorites"
+        android:name="ar.edu.ort.tpfinal_tp3.fragments.Favorites"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
 </navigation>

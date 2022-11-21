@@ -13,5 +13,6 @@
     <string name="character_preference_searcher_enabled">Buscador Habilitado</string>
     <string name="character_preference_allow_favorites">Permitir agregar a Favoritos</string>
     <string name="character_preference_gender">Genero</string>
+    <string name="detail_favorite">Favorito</string>
 
 </resources>

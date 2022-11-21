@@ -51,7 +51,6 @@ class Home : Fragment(), OnCharacterClickedListener {
 
     private lateinit var recycler : RecyclerView
     private lateinit var characterList : ArrayList<ar.edu.ort.tpfinal_tp3.model.Character>
-    private lateinit var characterAdapter: CharacterAdapter
     private lateinit var layoutManager : LinearLayoutManager
 
 
@@ -114,7 +113,8 @@ class Home : Fragment(), OnCharacterClickedListener {
                             image = item.image,
                             species = item.species,
                             origin = item.origin,
-                            gender = item.gender
+                            gender = item.gender,
+                            0
                         )
 
                         characterList.add(currentCharacter)

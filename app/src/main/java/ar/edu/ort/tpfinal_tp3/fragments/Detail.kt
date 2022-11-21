@@ -11,9 +11,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import ar.edu.ort.tpfinal_tp3.R
 import ar.edu.ort.tpfinal_tp3.R.drawable.icono_status2
+import ar.edu.ort.tpfinal_tp3.repository.CharacterRepository
 import com.bumptech.glide.Glide
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,6 +42,8 @@ class Detail : Fragment() {
     private lateinit var origin_detail : TextView
     private lateinit var icono : ImageView
     private lateinit var gender_detail : TextView
+    private lateinit var favorite_button : FloatingActionButton
+    private lateinit var characterRepository : CharacterRepository
 
     lateinit var sharedPreferences: SharedPreferences
 
@@ -69,13 +75,14 @@ class Detail : Fragment() {
             .addToBackStack(null)
             .commit()*/
 
-        image_detail=view.findViewById(R.id.character_detail_image)
-        specie_detail=view.findViewById(R.id.character_detail_specie)
-        name_detail=view.findViewById(R.id.character_detail_name)
-        status_detail=view.findViewById(R.id.character_detail_status)
-        origin_detail=view.findViewById(R.id.character_detail_origin)
-        icono=view.findViewById(R.id.iconoStatus)
+        image_detail = view.findViewById(R.id.character_detail_image)
+        specie_detail = view.findViewById(R.id.character_detail_specie)
+        name_detail =view.findViewById(R.id.character_detail_name)
+        status_detail = view.findViewById(R.id.character_detail_status)
+        origin_detail = view.findViewById(R.id.character_detail_origin)
+        icono = view.findViewById(R.id.iconoStatus)
         gender_detail = view.findViewById(R.id.character_detail_gender)
+        favorite_button = view.findViewById(R.id.favorite_button)
 
 
         arguments?.let {
@@ -105,11 +112,21 @@ class Detail : Fragment() {
 
         val genderEnabled : Boolean = sharedPreferences.getBoolean("gender", true)
 
-
         if (genderEnabled) {
             gender_detail.isVisible = true
         } else {
             gender_detail.isVisible = false
+        }
+
+        context?.let { characterRepository = CharacterRepository.getInstance(it) }
+
+        favorite_button.setOnClickListener{
+            lifecycleScope.launch {
+                arguments?.let {
+                    val character = DetailArgs.fromBundle(it).character
+                    characterRepository.addCharacter(character)
+                }
+            }
         }
 
     }

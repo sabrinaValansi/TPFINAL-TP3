@@ -80,6 +80,12 @@ class MainActivity : AppCompatActivity() {
                 supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 supportActionBar?.setDisplayShowHomeEnabled(true)
 
+            } else if (destination.id == R.id.favorites) {
+                supportActionBar?.show()
+                supportActionBar?.setHomeAsUpIndicator(R.drawable.hamburger_icon)
+                supportActionBar?.setDisplayShowTitleEnabled(false);
+                isTheFragment = false
+
             }
             else  {
                 supportActionBar?.hide()
