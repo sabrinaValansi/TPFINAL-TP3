@@ -45,6 +45,7 @@ class Detail : Fragment() {
     private lateinit var favorite_button : FloatingActionButton
     private lateinit var characterRepository : CharacterRepository
 
+
     lateinit var sharedPreferences: SharedPreferences
 
 
@@ -75,6 +76,8 @@ class Detail : Fragment() {
             .addToBackStack(null)
             .commit()*/
 
+
+
         image_detail = view.findViewById(R.id.character_detail_image)
         specie_detail = view.findViewById(R.id.character_detail_specie)
         name_detail =view.findViewById(R.id.character_detail_name)
@@ -84,6 +87,13 @@ class Detail : Fragment() {
         gender_detail = view.findViewById(R.id.character_detail_gender)
         favorite_button = view.findViewById(R.id.favorite_button)
 
+        arguments?.let {
+            if (!requireArguments().getBoolean("fromHome")) {
+                favorite_button.visibility = View.GONE
+            } else {
+                favorite_button.visibility = View.VISIBLE
+            }
+        }
 
         arguments?.let {
             val character = DetailArgs.fromBundle(it).character

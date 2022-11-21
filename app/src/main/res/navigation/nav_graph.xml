@@ -41,10 +41,17 @@
         <argument
             android:name="character"
             app:argType="ar.edu.ort.tpfinal_tp3.model.Character" />
+        <argument
+            android:name="fromHome"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/favorites"
         android:name="ar.edu.ort.tpfinal_tp3.fragments.Favorites"
         android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favorites_to_detail"
+            app:destination="@id/detail" />
+    </fragment>
 </navigation>

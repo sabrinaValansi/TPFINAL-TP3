@@ -157,6 +157,6 @@ class Home : Fragment(), OnCharacterClickedListener {
     }
 
     override fun onCharacterSelected(character: Character) {
-        findNavController().navigate(HomeDirections.actionHome2ToDetail(character))
+        findNavController().navigate(HomeDirections.actionHome2ToDetail(character, true))
     }
 }
