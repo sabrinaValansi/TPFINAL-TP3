@@ -10,8 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView.OnCloseListener
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -31,6 +34,8 @@ import com.google.gson.JsonArray
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -52,6 +57,7 @@ class Home : Fragment(), OnCharacterClickedListener {
     private lateinit var recycler : RecyclerView
     private lateinit var characterList : ArrayList<ar.edu.ort.tpfinal_tp3.model.Character>
     private lateinit var layoutManager : LinearLayoutManager
+    private lateinit var searchView : SearchView
 
 
 
@@ -86,10 +92,40 @@ class Home : Fragment(), OnCharacterClickedListener {
 
         characterList = ArrayList()
 
+        searchView = view.findViewById(R.id.searchView)
+
         getCharacter()
 
-        recycler.adapter = CharacterAdapter(characterList, this)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                val adapter = recycler.adapter
 
+                var filteredCharacters = ArrayList<ar.edu.ort.tpfinal_tp3.model.Character>()
+
+                filteredCharacters = characterList.filter { c -> c.name?.contains(searchView.query.toString()
+                    .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }) ?: false } as ArrayList<Character>
+
+                (adapter as CharacterAdapter).updateCharacter(filteredCharacters)
+
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                return false
+            }
+
+        })
+
+        val closeBtnId = searchView.context.resources.getIdentifier("android:id/search_close_btn", null, null)
+        val closeBtn = searchView.findViewById<ImageView>(closeBtnId)
+
+        closeBtn.setOnClickListener{
+            getCharacter()
+            (recycler.adapter as CharacterAdapter).updateCharacter(characterList)
+            searchView.setQuery("", false)
+            searchView.clearFocus()
+        }
 
     }
 
@@ -114,7 +150,8 @@ class Home : Fragment(), OnCharacterClickedListener {
                             species = item.species,
                             origin = item.origin,
                             gender = item.gender,
-                            0
+                            0,
+                            location = item.location
                         )
 
                         characterList.add(currentCharacter)

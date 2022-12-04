@@ -13,7 +13,8 @@ data class Character (
     var species: String?,
     var origin: Origin?,
     var gender : String?,
-    @PrimaryKey(autoGenerate = true) val uid : Int
+    @PrimaryKey(autoGenerate = true) val uid : Int,
+    var location : Location?
 
     ) : Parcelable {
         constructor(parcel : Parcel) : this(
@@ -23,7 +24,8 @@ data class Character (
             parcel.readString(),
             parcel.readParcelable(Origin::class.java.classLoader),
             parcel.readString(),
-            parcel.readInt()
+            parcel.readInt(),
+            parcel.readParcelable(Location::class.java.classLoader)
         )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -34,6 +36,7 @@ data class Character (
         parcel.writeParcelable(origin, flags)
         parcel.writeString(gender)
         parcel.writeInt(uid)
+        parcel.writeParcelable(location, flags)
     }
 
     override fun describeContents(): Int {

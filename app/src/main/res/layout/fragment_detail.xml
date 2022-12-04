@@ -132,6 +132,22 @@
             app:layout_constraintTop_toBottomOf="@+id/character_detail_origin"
             />
 
+        <TextView
+            style="@style/TEXTS"
+            android:id="@+id/character_detail_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:width="0dp"
+            android:fontFamily="casual"
+            android:text="TextView"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toBottomOf="@+id/character_detail_gender"
+            />
+
+
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/favorite_button"
             android:layout_width="wrap_content"

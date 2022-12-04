@@ -44,6 +44,7 @@ class Detail : Fragment() {
     private lateinit var gender_detail : TextView
     private lateinit var favorite_button : FloatingActionButton
     private lateinit var characterRepository : CharacterRepository
+    private lateinit var location_detail : TextView
 
 
     lateinit var sharedPreferences: SharedPreferences
@@ -86,6 +87,7 @@ class Detail : Fragment() {
         icono = view.findViewById(R.id.iconoStatus)
         gender_detail = view.findViewById(R.id.character_detail_gender)
         favorite_button = view.findViewById(R.id.favorite_button)
+        location_detail = view.findViewById(R.id.character_detail_location)
 
         arguments?.let {
             if (!requireArguments().getBoolean("fromHome")) {
@@ -102,6 +104,7 @@ class Detail : Fragment() {
             status_detail.text=character.status
             origin_detail.text=character.origin?.name
             gender_detail.text = character.gender
+            location_detail.text = character.location?.name
 
             if(status_detail.text.equals("Alive")){
                 icono.setImageResource(R.drawable.icono_status2)

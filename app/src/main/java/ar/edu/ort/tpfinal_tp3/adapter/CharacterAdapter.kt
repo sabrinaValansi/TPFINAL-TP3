@@ -7,7 +7,7 @@ import ar.edu.ort.tpfinal_tp3.R
 import ar.edu.ort.tpfinal_tp3.listener.OnCharacterClickedListener
 
 class CharacterAdapter (
-    private val characterList : List<ar.edu.ort.tpfinal_tp3.model.Character>,
+    private val characterList : MutableList<ar.edu.ort.tpfinal_tp3.model.Character>,
     private val onCharacterClickedListener: OnCharacterClickedListener
 ) : RecyclerView.Adapter<CharacterViewHolder>() {
 
@@ -24,6 +24,12 @@ class CharacterAdapter (
         holder.itemView.setOnClickListener{
             onCharacterClickedListener.onCharacterSelected(character)
         }
+    }
+
+    fun updateCharacter(filteredCharacters : ArrayList<ar.edu.ort.tpfinal_tp3.model.Character>) {
+        characterList.clear()
+        characterList.addAll(filteredCharacters)
+        this.notifyDataSetChanged()
     }
 
     override fun getItemCount() = characterList.size
